@@ -1,0 +1,64 @@
+{
+  "name": "amazon-express-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "make-migrate": "npx knex migrate:make amz --knexfile ./src/db/knexfile.ts",
+    "migrate": "npx knex migrate:latest --knexfile ./src/db/knexfile.ts",
+    "make-seed": "npx knex seed:make dev --knexfile ./src/db/knexfile.ts",
+    "seed": "npm run down && npm run migrate && npx knex seed:run --knexfile ./src/db/knexfile.ts && npm start",
+    "down": "npx knex migrate:down --knexfile ./src/db/knexfile.ts",
+    "build": "tsc",
+    "start:dev": "node ./build/server.js",
+    "postinstall": "tsc",
+    "start": "node build/server.js",
+    "test": "jest",
+    "test-coverage": "jest --coverage"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "./db/migrations"
+    ]
+  },
+  "engines": {"node": "14.17.4"},
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "faker": "^5.5.3",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.21",
+    "objection": "^2.2.15",
+    "pg": "^8.7.1",
+    "stripe": "^8.169.0",
+    "twilio": "^3.66.1",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/faker": "^5.5.8",
+    "@types/jest": "^26.0.24",
+    "@types/jsonwebtoken": "^8.5.4",
+    "@types/knex": "^0.16.1",
+    "@types/node": "^16.4.13",
+    "@types/supertest": "^2.0.11",
+    "@types/uuid": "^8.3.1",
+    "jest": "^27.0.6",
+    "supertest": "^6.1.5",
+    "ts-jest": "^27.0.4",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}

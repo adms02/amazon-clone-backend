@@ -1,0 +1,12 @@
+/node_modules
+/coverage
+/__tests__/integration
+/build
+/.env
+/env
+/Procfile
+Profile
+/src/db/knexfile
+knexfile
+src/__tests__
+src/db
